@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function computerPlay() {
+            let number = Math.floor(Math.random() * 3);
+            if (number == 0) {
+                return "Rock";
+            }
+            if (number == 1) {
+                return "Paper";
+            }
+            else {
+                return "Scissors";
+            }
+        }
+        function playRound(playerSelection, computerSelection){
+            let player = playerSelection.toLowerCase();
+            let computer = computerSelection.toLowerCase();
+            if (player==="rock") {
+                if (computer==="rock") {
+                    return "Tie";
+                }
+                if (computer==="paper") {
+                    return "Lose";
+                }
+                if (computer==="scissors") {
+                    return "Win";
+                }
+            }
+            if (player==="paper") {
+                if (computer==="rock") {
+                    return "Win";
+                }
+                if (computer==="paper") {
+                    return "Tie";
+                }
+                if (computer==="scissors") {
+                    return "Lose";
+                }
+            }
+            if (player==="scissors") {
+                if (computer==="rock") {
+                    return "Lose";
+                }
+                if (computer==="paper") {
+                    return "Win";
+                }
+                if (computer==="scissors") {
+                    return "Tie";
+                }
+            }
+        }
+        function game() {
+            let round = 1;
+            let playerScore = 0;
+            let computerScore = 0;
+            while (round <= 5) {
+                let playerSelection = window.prompt("Rock paper or scissors?");
+                let computerSelection = computerPlay();
+                let playerResult = playRound(playerSelection, computerSelection);
+                if (playerResult==="Win") {
+                    playerScore++;
+                }
+                if (playerResult==="Lose") {
+                    computerScore++;
+                }
+                console.log("Player: " + playerSelection);
+                console.log("Computer: " + computerSelection);
+                console.log(playerResult);
+                round++;
+            }
+            if (playerScore < computerScore) {
+                console.log("Computer wins.");
+            }
+            if (computerScore < playerScore) {
+                console.log("Player wins.");
+            }
+            if (playerScore == computerScore) {
+                console.log("Computer and player tie");
+            }
+        }
+    </script>
+</body>
+</html>
